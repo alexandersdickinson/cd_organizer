@@ -6,12 +6,16 @@ class Artist
   
   def add_album(album)
     @albums.push(album)
-    @albums.sort do |a,b|
+    @albums.sort! do |a,b|
       a = a.name()[0].upcase()
       b = b.name()[0].upcase()
-      return 1 if a > b
-      return 0 if a == b
-      return -1 if a < b
+      if a > b
+        1
+      elsif a == b
+        0
+      else
+        -1
+      end
     end
   end
   
@@ -20,8 +24,10 @@ class Artist
   end
   
   class Album
-    def initialize(name, track_list)
+    def initialize(name, *tracks)
       @name = name
+      track_list = []
+      track_list = tracks.each() {|track| track_list.push(track)} 
       @track_list = track_list
     end
   
