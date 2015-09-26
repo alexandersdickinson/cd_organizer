@@ -20,5 +20,14 @@ describe(Artist) do
       kraftwerk.add_album(die_mensch_maschine)
       expect(kraftwerk.albums()).to(eq([autobahn, die_mensch_maschine, radioaktivitaet]))
     end
+    
+    it('alphabetizes albums that start with the same letter') do
+      apple = Artist::Album.new("Apple", "Example Song")
+      aardvark = Artist::Album.new("Aardvark", "Example Song")
+      example_artist = Artist.new("Example")
+      example_artist.add_album(apple)
+      example_artist.add_album(aardvark)
+      expect(example_artist.albums()).to(eq([aardvark, apple]))
+    end 
   end
 end

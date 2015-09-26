@@ -6,17 +6,7 @@ class Artist
   
   def add_album(album)
     @albums.push(album)
-    @albums.sort! do |a,b|
-      a = a.name()[0].upcase()
-      b = b.name()[0].upcase()
-      if a > b
-        1
-      elsif a == b
-        0
-      else
-        -1
-      end
-    end
+    Artist::Album.sort_albums(@albums)
   end
   
   def albums()
@@ -33,6 +23,32 @@ class Artist
   
     def name()
       @name
+    end
+    
+    def self.sort_albums(albums)
+      albums.sort! do |a,b|
+        name1 = a.name().split('')
+        name2 = b.name().split('')
+        char1 = ''
+        char2 = ''
+        name1.each_index() do |i|
+          break if i >= name2.length()
+          char1 = name1[i].upcase()
+          char2 = name2[i].upcase()
+          if char1 == char2
+            next
+          else
+            break
+          end
+        end
+        if char1 > char2
+          1
+        elsif a == b
+          0
+        else
+          -1
+        end
+      end
     end
   end
 end
