@@ -12,6 +12,6 @@ describe('the artist input path') do
     fill_in('artist', :with => 'Kraftwerk')
     click_button('Submit')
     click_link('Back')
-    expect(page).to(have_content('Prince Kraftwerk'))
+    expect(page).to(have_content('Kraftwerk Prince'))
   end
 end

@@ -4,11 +4,16 @@ class Artist
   def initialize(name)
     @name = name
     @albums = []
+    @id = @@artists.length() + 1
   end
   
   def add_album(album)
     @albums.push(album)
     Artist.alpha_sort(@albums)
+  end
+  
+  def id()
+    @id
   end
   
   def name()
@@ -25,6 +30,12 @@ class Artist
   
   def self.delete()
     @@artists = []
+  end
+  
+  def self.find(id)
+    @@artists.each do |artist|
+      return artist if artist.id() == id
+    end
   end
   
   def save()

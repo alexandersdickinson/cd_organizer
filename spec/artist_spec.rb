@@ -50,4 +50,14 @@ describe(Artist) do
       expect(Artist.all()).to(eq([prince, yazoo]))
     end
   end
+  
+  describe('.find') do
+    it('finds an artist based on its id') do
+      prince = Artist.new("Prince")
+      yazoo = Artist.new("Yazoo")
+      prince.save()
+      yazoo.save()
+      expect(Artist.find(prince.id())).to(eq(prince))
+    end
+  end
 end
