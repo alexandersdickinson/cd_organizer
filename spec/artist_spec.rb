@@ -2,6 +2,10 @@ require('rspec')
 require('artist')
 
 describe(Artist) do
+  before() do
+    Artist.delete()
+  end
+  
   describe('#add_album') do
     it('adds albums to an array associated with the artist') do
       prince = Artist.new("The Artist Formerly Known As Prince")
@@ -29,5 +33,21 @@ describe(Artist) do
       example_artist.add_album(aardvark)
       expect(example_artist.albums()).to(eq([aardvark, apple]))
     end 
+  end
+  
+  describe('#save') do
+    it('adds an artist to the list of artists') do
+      prince = Artist.new("Prince")
+      prince.save()
+      expect(Artist.all()).to(eq([prince]))
+    end
+    
+    it('alphabetizes artists') do
+      prince = Artist.new("Prince")
+      yazoo = Artist.new("Yazoo")
+      yazoo.save()
+      prince.save()
+      expect(Artist.all()).to(eq([prince, yazoo]))
+    end
   end
 end
