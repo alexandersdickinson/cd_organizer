@@ -1,0 +1,24 @@
+<ul>
+	<%@artist.albums().each() do |album|%>
+		<h2><li><%= album.name()%></li></h2>
+		<ul>
+			<%album.track_list().each() do |track|%>
+				<h3><li><%= track%></li></h3>
+			<%end%>
+		</ul>
+	<%end%>
+</ul>
+
+<form action='/<%= @artist.id()%>/album-success' method='post'>
+	<div class='form-group'>
+		<label for='album'>Album</label>
+		<input id='album' name='album' type='text' class='form-control'>
+	</div>
+	
+	<div class='form-group'>
+		<label for='tracks'>Tracks</label>
+		<input id='tracks' name='tracks' type='text' class='form-control' placeholder='Separate Tracks with Commas'>
+	</div>
+	
+	<button class='btn btn-primary'>Submit</button>
+</form>

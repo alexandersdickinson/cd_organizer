@@ -80,5 +80,9 @@ class Artist
     def name()
       @name
     end
+    
+    def track_list()
+      @track_list
+    end
   end
 end

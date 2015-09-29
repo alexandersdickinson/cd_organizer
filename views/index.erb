@@ -1,10 +1,10 @@
 <ul>
 	<%@artists.each() do |artist|%>
-		<h2><li><a href><%= artist.name()%></a></li></h2>
+		<h2><li><a href="/<%= artist.id()%>"><%= artist.name()%></a></li></h2>
 	<%end%>
 </ul>
 
-<form action='/success' method='post'>
+<form action='/art-success' method='post'>
 	<div class='form-group'>
 		<label for='artist'>Artist</label>
 		<input type='text' name='artist' id='artist' class='form-control'>
